@@ -6,3 +6,7 @@
   width: 96px;
   height: 96px;
 }
+
+.background, .background .pane, .background .item, .background .item-complex .item-content{
+    background-color: #f7f8fa;
+}
