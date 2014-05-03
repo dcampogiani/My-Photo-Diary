@@ -1,5 +1,19 @@
-<ion-view title="Settings">
+<ion-view title="Settings" class="background">
     <ion-content padding="true">
-        <p>Controlled by {{controllerName}} </p>
+        <button class="button button-block button-assertive" ng-click="deleteAll()">
+            Delete {{ howManyPictures() }} pictures
+        </button>
+
+        <button class="button button-block button-positive" ng-click="fakeOnePicture()">
+            Fake 1 Picture
+        </button>
+
+
+        <div class="card">
+            <div class="item item-text-wrap">
+                {{ getCurrentPicturesJSON() }}
+            </div>
+        </div>
+
     </ion-content>
 </ion-view>

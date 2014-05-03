@@ -1,0 +1,19 @@
+<div class="modal">
+    <ion-header-bar class="bar-dark">
+        <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        <h1 class="title">New Picture</h1>
+        <button ng-if="_newPicture.description!=''" class="button button-clear button-primary" ng-click="saveNewPhoto()">Save</button>
+    </ion-header-bar>
+    <ion-content class="background">
+        <div class="list card">
+            <label class="item item-input">
+                <input type="text" placeholder="Insert Description" ng-model="_newPicture.description">
+            </label>
+
+            <div class="item item-body">
+                <img class="full-image" ng-src={{_newPicture.url}}>
+            </div>
+
+        </div>
+    </ion-content>
+</div>
