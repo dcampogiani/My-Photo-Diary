@@ -19,11 +19,11 @@
 
 <body ng-app="MyPhotoDiary">
 
-<ion-nav-bar class="nav-title-slide-ios7 bar-stable" delegate-handle="MainNavBar" ng-controller="MainNavBarController">
+<ion-nav-bar class="nav-title-slide-ios7 bar-dark" delegate-handle="MainNavBar" ng-controller="MainNavBarController">
     <ion-nav-back-button class="button-icon ion-ios7-arrow-back">
     </ion-nav-back-button>
     <ion-nav-buttons side="right">
-        <button class="button button-icon icon ion-ios7-camera-outline" ng-click="newPicture()"></button>
+        <button class="button button-icon icon ion-ios7-camera-outline" ng-click="capturePicture()"></button>
     </ion-nav-buttons>
 </ion-nav-bar>
 
@@ -43,6 +43,9 @@
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
+<script src="scripts/services/CameraService.js"></script>
+<script src="scripts/services/PicturesService.js"></script>
+<script src="scripts/services/GeolocationService.js"></script>
 <script src="scripts/controllers/MainNavBarController.js"></script>
 <script src="scripts/controllers/PlacesController.js"></script>
 <script src="scripts/controllers/SettingsController.js"></script>

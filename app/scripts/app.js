@@ -4,8 +4,9 @@
 // 'MyPhotoDiary' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 
-angular.module('MyPhotoDiary.controllers',[]);
 angular.module('MyPhotoDiary.services',[]);
+
+angular.module('MyPhotoDiary.controllers',['MyPhotoDiary.services']);
 
 angular.module('MyPhotoDiary', ['ionic','MyPhotoDiary.controllers','MyPhotoDiary.services'])
 
