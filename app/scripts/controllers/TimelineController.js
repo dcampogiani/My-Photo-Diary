@@ -55,10 +55,11 @@ angular.module('MyPhotoDiary.controllers')
         };
 
         $scope.$on('NewPicture', function() {
-            alert('new photo');
 
-            var _newPicture = PicturesService.getPictures(0,1);
-            $scope.pictures.unshift(_newPicture);
+            var _newPictureArray = PicturesService.getPictures(0,1);
+
+            if (_newPictureArray.length==1)
+                $scope.pictures.unshift(_newPictureArray[0]);
 
         });
 
