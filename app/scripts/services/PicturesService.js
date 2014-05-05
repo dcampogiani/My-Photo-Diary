@@ -40,6 +40,7 @@ angular.module('MyPhotoDiary.services')
             for (var i=0;i<all.length;i++){
 
                 if (all[i].url==toDelete.url){
+                    all.splice(i,1);
                     _all=all;
                     break;
                 }
