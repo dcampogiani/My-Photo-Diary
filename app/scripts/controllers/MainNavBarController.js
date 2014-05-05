@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('MainNavBarController', function($scope, $ionicModal, CameraService, GeolocationService, PicturesService){
+    .controller('MainNavBarController', function($scope, $ionicModal, CameraService, GeolocationService, PicturesService, StorageService){
 
         $ionicModal.fromTemplateUrl('templates/confirmPhoto.html', {
             scope: $scope,
@@ -26,26 +26,38 @@ angular.module('MyPhotoDiary.controllers')
                         },
 
                         function(locationError){//position error
-                            //TODO show popop with error
+                            //TODO show popup with error
                         });
 
                 },
 
                 function(photoError){//photo error
-                    //TODO show popop with error
+                    //TODO show popup with error
                 });
 
         };
 
         $scope.saveNewPhoto = function(){
 
-            PicturesService.savePicture($scope._newPicture);
+            StorageService.movePicture($scope._newPicture.url).then(
+
+                function(result){
+                    $scope._newPicture.url = result;
+                    PicturesService.savePicture($scope._newPicture);
+                    $scope._newPicture = {};
+
+                    $scope.$parent.$broadcast('NewPicture');
+                },
+
+                function(error){
+                    //TODO show popup with error
+                });
+
+
 
             $scope.modal.hide();
 
-            $scope._newPicture = {};
 
-            $scope.$parent.$broadcast('NewPicture');
 
 
         };

@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('SettingsController', function($scope, PicturesService, SettingsService ){
+    .controller('SettingsController', function($scope, $ionicPopup, PicturesService, SettingsService ){
 
         $scope.settings = {};
 
@@ -17,7 +17,22 @@ angular.module('MyPhotoDiary.controllers')
         };
 
         $scope.deleteAll = function(){
-            return PicturesService.deleteAllPictures();
+
+
+            var _confirmPopup = $ionicPopup.confirm({
+                title: 'Please confirm',
+                template: 'Are you sure you want to delete all pictures ?',
+                okText: 'Delete',
+                okType: 'button-assertive'
+            });
+            _confirmPopup.then(function(res) {
+                if(res) {
+                    return PicturesService.deleteAllPictures();
+                }
+            });
+
+
+
         };
 
         $scope.getCurrentPicturesJSON = function(){
