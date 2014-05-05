@@ -42,6 +42,8 @@ angular.module('MyPhotoDiary.services')
                 if (all[i].url==toDelete.url){
                     all.splice(i,1);
                     _all=all;
+
+                    //TODO delete also from disk
                     break;
                 }
             }

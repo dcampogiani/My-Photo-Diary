@@ -1,12 +1,12 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('TimelineController', function($scope, PicturesService){
+    .controller('TimelineController', function($scope, PicturesService, SettingsService){
 
-        //TODO read setting to decide how many pictures retrieve, to date is 1
+        var _picturesToFetch = function(){ return SettingsService.getHowManyPicturesToFetch()};
 
-        $scope.pictures = PicturesService.getPictures(0,1);
+        $scope.pictures = PicturesService.getPictures(0,_picturesToFetch());
 
-        var _lastIndex = 0;
+        var _lastIndex = _picturesToFetch()-1;
 
         var _thereAreMorePictures = true;
 
@@ -16,14 +16,17 @@ angular.module('MyPhotoDiary.controllers')
 
             if (_thereAreMorePictures){
 
-                var _toAdd = PicturesService.getPictures(_lastIndex+1,1);
+
+                var _toAdd = PicturesService.getPictures(_lastIndex+1,_picturesToFetch());
+
 
                 if (_toAdd) {
 
-                    if (_toAdd.length < 1)
+                    if (_toAdd.length < _picturesToFetch())
                         _thereAreMorePictures = false;
 
-                    _lastIndex = _lastIndex + 1;
+
+                    _lastIndex = _lastIndex + _toAdd.length;
 
                     for (var i=0;i<_toAdd.length;i++)
                     {

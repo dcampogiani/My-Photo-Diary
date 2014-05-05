@@ -2,8 +2,6 @@ angular.module('MyPhotoDiary.services')
 
     .service('CameraService', function($q){
 
-        //TODO read from settings wanted quality
-
         var _options = { quality : 100,
             //destinationType : Camera.DestinationType.FILE_URI,
             destinationType : 1,
@@ -33,7 +31,5 @@ angular.module('MyPhotoDiary.services')
             }
         };
         return _service;
-
-
 
     });

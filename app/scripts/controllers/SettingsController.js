@@ -1,6 +1,10 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('SettingsController', function($scope, PicturesService ){
+    .controller('SettingsController', function($scope, PicturesService, SettingsService ){
+
+        $scope.settings = {};
+
+        $scope.settings.howManyPicturesToFetch = SettingsService.getHowManyPicturesToFetch();
 
         $scope.howManyPictures = function() {
 
@@ -8,17 +12,13 @@ angular.module('MyPhotoDiary.controllers')
 
         };
 
+        $scope.saveSettings = function() {
+            return SettingsService.setHowManyPicturesToFetch($scope.settings.howManyPicturesToFetch);
+        };
+
         $scope.deleteAll = function(){
             return PicturesService.deleteAllPictures();
         };
-
-        $scope.fakeOnePicture = function(){
-
-            var _toSave = { description: 'testDest', url : 'http://3.bp.blogspot.com/-aPLJcAFLy40/UIVn9AMfxJI/AAAAAAAAAII/5YAW0aY2938/s1600/vieri-inter.jpeg', latitude : '11', longitude : '12' };
-
-            PicturesService.savePicture(_toSave);
-        };
-
 
         $scope.getCurrentPicturesJSON = function(){
 
