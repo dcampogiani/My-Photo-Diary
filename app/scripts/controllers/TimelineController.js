@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('TimelineController', function($scope, PicturesService, SettingsService){
+    .controller('TimelineController', function($scope, $ionicPopup, $ionicScrollDelegate, PicturesService, SettingsService){
 
         var _picturesToFetch = function(){ return SettingsService.getHowManyPicturesToFetch()};
 
@@ -44,11 +44,18 @@ angular.module('MyPhotoDiary.controllers')
 
         $scope.deletePhoto = function(toDelete, index) {
 
-            //TODO show popup
-
-            PicturesService.deletePicture(toDelete);
-
-            $scope.pictures.splice(index,1);
+            var _confirmPopup = $ionicPopup.confirm({
+                title: 'Please confirm',
+                template: 'Are you sure you want to delete '+toDelete.description+'?',
+                okText: 'Delete',
+                okType: 'button-assertive'
+            });
+            _confirmPopup.then(function(res) {
+                if(res) {
+                    PicturesService.deletePicture(toDelete);
+                    $scope.pictures.splice(index,1);
+                }
+            });
 
         };
 
@@ -61,8 +68,10 @@ angular.module('MyPhotoDiary.controllers')
 
             var _newPictureArray = PicturesService.getPictures(0,1);
 
-            if (_newPictureArray.length==1)
+            if (_newPictureArray.length==1) {
                 $scope.pictures.unshift(_newPictureArray[0]);
+                $ionicScrollDelegate.$getByHandle('timelineScroll').scrollTop(true);
+            }
 
         });
 
