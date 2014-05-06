@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.services')
 
-    .service('PicturesService', function(){
+    .service('PicturesService', function($q, StorageService){
 
         var _all = [];
 
@@ -36,15 +36,29 @@ angular.module('MyPhotoDiary.services')
         var _deletePicture = function(toDelete){
 
             var all = _getAllPictures();
+            var deferred = $q.defer();
 
             for (var i=0;i<all.length;i++){
 
                 if (all[i].url==toDelete.url){
-                    all.splice(i,1);
-                    _all=all;
 
-                    //TODO delete also from disk
-                    break;
+                    StorageService.deletePicture(toDelete.url).then(
+
+                        function(result){
+
+                            all.splice(i,1);
+                            _all=all;
+                            deferred.resolve(result);
+
+                        },
+                        function(error){
+
+                            deferred.reject(error);
+
+                        });
+
+                    return deferred.promise;
+
                 }
             }
 
@@ -52,10 +66,27 @@ angular.module('MyPhotoDiary.services')
 
         var _deleteAllPictures = function(){
 
+            var _old = _getAllPictures();
+            var _len = _old.length;
+            var deferred = $q.defer();
+
+            for (var i=0;i<_len;i++)
+            {
+                StorageService.deletePicture(_old[i].url).then(
+                    function(result){
+
+                    },
+                    function(error){
+
+                        deferred.reject(error);
+                        return deferred.promise;
+                    });
+            }
+
             window.localStorage['pictures'] = [];
             _all =[];
-            //TODO delete also from disk
-
+            deferred.resolve('Pictures deleted');
+            return deferred.promise;
 
         };
 

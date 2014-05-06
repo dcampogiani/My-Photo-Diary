@@ -50,10 +50,18 @@ angular.module('MyPhotoDiary.controllers')
                 okText: 'Delete',
                 okType: 'button-assertive'
             });
+
             _confirmPopup.then(function(res) {
                 if(res) {
-                    PicturesService.deletePicture(toDelete);
-                    $scope.pictures.splice(index,1);
+                    PicturesService.deletePicture(toDelete).then(
+
+                        function(result){
+                            $scope.pictures.splice(index,1);
+
+                        },
+                        function(error){
+                            //TODO show popup with error
+                        });
                 }
             });
 

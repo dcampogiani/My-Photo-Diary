@@ -27,7 +27,13 @@ angular.module('MyPhotoDiary.controllers')
             });
             _confirmPopup.then(function(res) {
                 if(res) {
-                    return PicturesService.deleteAllPictures();
+                    return PicturesService.deleteAllPictures().then(
+
+                        function(result){
+
+                        },function(error){
+                            //TODO show popup with error
+                        });
                 }
             });
 

@@ -8,11 +8,17 @@ angular.module('MyPhotoDiary.services')
 
         var  _movePicture = function(tempPicturePath){
             deferred = $q.defer();
-            window.resolveLocalFileSystemURL(tempPicturePath, _resolveOnSuccess, _resOnError);
+            window.resolveLocalFileSystemURL(tempPicturePath, _resolveOnSuccessMove, _resOnError);
             return deferred.promise;
         };
 
-        var _resolveOnSuccess =  function(entry){
+        var _deletePicture = function(toDeletePath){
+            deferred = $q.defer();
+            window.resolveLocalFileSystemURL(toDeletePath, _resolveOnSuccessDelete, _resOnError);
+            return deferred.promise;
+        };
+
+        var _resolveOnSuccessMove =  function(entry){
 
             window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSys) {
                     //The folder is created if doesn't exist
@@ -30,6 +36,22 @@ angular.module('MyPhotoDiary.services')
         };
 
 
+        var _resolveOnSuccessDelete =  function(entry){
+
+            window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSys) {
+
+                    if (!_fileSystem)
+                        _fileSystem=fileSys;
+
+                    entry.remove(_successDelete, _resOnError);
+
+                },
+                _resOnError);
+        };
+
+        var _successDelete = function(){
+            deferred.resolve('Picture deleted');
+        };
 
         var _successMove = function(entry) {
 
@@ -45,10 +67,6 @@ angular.module('MyPhotoDiary.services')
 
         var _resOnError = function(error) {
             deferred.reject(error.code);
-        };
-
-        var _deletePicture = function(toDelete){
-            //TODO to implement
         };
 
         return{
