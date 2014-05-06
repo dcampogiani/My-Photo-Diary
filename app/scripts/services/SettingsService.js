@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.services')
 
-    .service('SettingsService', function($rootScope){
+    .service('SettingsService', function(){
 
         var _settings = {};
         var _settingsString = window.localStorage['settings'];
@@ -27,7 +27,7 @@ angular.module('MyPhotoDiary.services')
 
         var _saveSettings = function(){
             window.localStorage['settings'] = angular.toJson(_settings);
-            //$rootScope.$broadcast("SettingsChanged"); do I really need? Also remove from Dep Inj
+            //$rootScope.$broadcast("SettingsChanged"); do I really need? Rememver to inject in Dep Inj
         };
 
 
