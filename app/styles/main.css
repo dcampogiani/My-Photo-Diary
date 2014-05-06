@@ -1,12 +1,6 @@
-/* Your app's CSS, go crazy, make it your own */
-
-.ionic-logo {
-  display: block;
-  margin: 15px auto;
-  width: 96px;
-  height: 96px;
-}
-
 .background, .background .pane, .background .item, .background .item-complex .item-content{
     background-color: #f7f8fa;
 }
+
+.angular-google-map-container { height:100%; width:100%; position:absolute; top:0; left:0; }
+

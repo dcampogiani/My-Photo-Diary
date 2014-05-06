@@ -8,7 +8,7 @@ angular.module('MyPhotoDiary.services',[]);
 
 angular.module('MyPhotoDiary.controllers',['MyPhotoDiary.services']);
 
-angular.module('MyPhotoDiary', ['ionic','MyPhotoDiary.controllers','MyPhotoDiary.services'])
+angular.module('MyPhotoDiary', ['ionic','MyPhotoDiary.controllers','MyPhotoDiary.services','google-maps'])
 
     .run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {

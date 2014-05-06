@@ -1,7 +1,12 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('PlacesController', function($scope){
+    .controller('PlacesController', function($scope, GeolocationService){
 
-        $scope.controllerName='PlacesController';
-
+        $scope.map = {
+            center: {
+                latitude: 45,
+                longitude: -73
+            },
+            zoom: 8
+        };
     });
