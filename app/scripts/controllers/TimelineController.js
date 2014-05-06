@@ -60,7 +60,12 @@ angular.module('MyPhotoDiary.controllers')
 
                         },
                         function(error){
-                            //TODO show popup with error
+                            $ionicPopup.alert({
+                                title: 'Error',
+                                content: error,
+                                okType: 'button-assertive'
+                            }).then(function(res) {
+                            });
                         });
                 }
             });

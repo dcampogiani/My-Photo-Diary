@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('MainNavBarController', function($scope, $ionicModal, CameraService, GeolocationService, PicturesService, StorageService){
+    .controller('MainNavBarController', function($scope, $ionicModal, $ionicPopup, CameraService, GeolocationService, PicturesService, StorageService){
 
         $ionicModal.fromTemplateUrl('templates/confirmPhoto.html', {
             scope: $scope,
@@ -26,13 +26,23 @@ angular.module('MyPhotoDiary.controllers')
                         },
 
                         function(locationError){//position error
-                            //TODO show popup with error
+                            $ionicPopup.alert({
+                                title: 'Error',
+                                content: locationError,
+                                okType: 'button-assertive'
+                            }).then(function(res) {
+                            });
                         });
 
                 },
 
                 function(photoError){//photo error
-                    //TODO show popup with error
+                    $ionicPopup.alert({
+                        title: 'Error',
+                        content: photoError,
+                        okType: 'button-assertive'
+                    }).then(function(res) {
+                    });
                 });
 
         };
@@ -48,7 +58,12 @@ angular.module('MyPhotoDiary.controllers')
                 },
 
                 function(error){
-                    //TODO show popup with error
+                    $ionicPopup.alert({
+                        title: 'Error',
+                        content: error,
+                        okType: 'button-assertive'
+                    }).then(function(res) {
+                    });
                 });
 
 
