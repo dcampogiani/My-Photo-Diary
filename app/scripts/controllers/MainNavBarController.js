@@ -45,8 +45,6 @@ angular.module('MyPhotoDiary.controllers')
                     $scope._newPicture.url = result;
                     PicturesService.savePicture($scope._newPicture);
                     $scope._newPicture = {};
-
-                    $scope.$parent.$broadcast('NewPicture');
                 },
 
                 function(error){

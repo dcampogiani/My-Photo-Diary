@@ -13,7 +13,7 @@ angular.module('MyPhotoDiary.controllers')
         };
 
         $scope.saveSettings = function() {
-            return SettingsService.setHowManyPicturesToFetch($scope.settings.howManyPicturesToFetch);
+            SettingsService.setHowManyPicturesToFetch($scope.settings.howManyPicturesToFetch);
         };
 
         $scope.deleteAll = function(){
@@ -46,5 +46,6 @@ angular.module('MyPhotoDiary.controllers')
             return angular.toJson(PicturesService.getAllPictures());
 
         };
+
 
     });

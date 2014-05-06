@@ -2,11 +2,11 @@ angular.module('MyPhotoDiary.controllers')
 
     .controller('TimelineController', function($scope, $ionicPopup, $ionicScrollDelegate, PicturesService, SettingsService){
 
-        var _picturesToFetch = function(){ return SettingsService.getHowManyPicturesToFetch()};
+        var _picturesToFetch = SettingsService.getHowManyPicturesToFetch();
 
-        $scope.pictures = PicturesService.getPictures(0,_picturesToFetch());
+        $scope.pictures = PicturesService.getPictures(0,_picturesToFetch);
 
-        var _lastIndex = _picturesToFetch()-1;
+        var _lastIndex = _picturesToFetch-1;
 
         var _thereAreMorePictures = true;
 
@@ -17,12 +17,12 @@ angular.module('MyPhotoDiary.controllers')
             if (_thereAreMorePictures){
 
 
-                var _toAdd = PicturesService.getPictures(_lastIndex+1,_picturesToFetch());
+                var _toAdd = PicturesService.getPictures(_lastIndex+1,_picturesToFetch);
 
 
                 if (_toAdd) {
 
-                    if (_toAdd.length < _picturesToFetch())
+                    if (_toAdd.length < _picturesToFetch)
                         _thereAreMorePictures = false;
 
 
@@ -73,7 +73,6 @@ angular.module('MyPhotoDiary.controllers')
         };
 
         $scope.$on('NewPicture', function() {
-
             var _newPictureArray = PicturesService.getPictures(0,1);
 
             if (_newPictureArray.length==1) {
@@ -82,5 +81,12 @@ angular.module('MyPhotoDiary.controllers')
             }
 
         });
+
+        /*$scope.$on('SettingsChanged', function() {
+
+            console.log('settingsChanged');
+            _picturesToFetch = SettingsService.getHowManyPicturesToFetch();
+
+        });*/
 
     });

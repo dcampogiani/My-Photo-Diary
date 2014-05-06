@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.services')
 
-    .service('PicturesService', function($q, StorageService){
+    .service('PicturesService', function($rootScope, $q, StorageService){
 
         var _all = [];
 
@@ -19,6 +19,9 @@ angular.module('MyPhotoDiary.services')
 
             _getAllPictures().unshift(toSave);
             window.localStorage['pictures'] = angular.toJson(_all);
+            $rootScope.$broadcast("NewPicture");
+
+
 
         };
 

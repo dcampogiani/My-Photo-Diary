@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.services')
 
-    .service('SettingsService', function(){
+    .service('SettingsService', function($rootScope){
 
         var _settings = {};
         var _settingsString = window.localStorage['settings'];
@@ -18,6 +18,7 @@ angular.module('MyPhotoDiary.services')
         };
 
         var _setHowManyPicturesToFetch = function(value){
+
             if (value>=1){
                 _settings.howManyPicturesToFetch = value;
                 _saveSettings();
@@ -26,6 +27,7 @@ angular.module('MyPhotoDiary.services')
 
         var _saveSettings = function(){
             window.localStorage['settings'] = angular.toJson(_settings);
+            //$rootScope.$broadcast("SettingsChanged"); do I really need? Also remove from Dep Inj
         };
 
 
