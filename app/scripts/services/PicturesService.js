@@ -48,6 +48,7 @@ angular.module('MyPhotoDiary.services')
 
                             all.splice(i,1);
                             _all=all;
+                            window.localStorage['pictures'] = angular.toJson(_all);
                             deferred.resolve(result);
 
                         },
