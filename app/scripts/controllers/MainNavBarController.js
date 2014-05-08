@@ -12,7 +12,7 @@ angular.module('MyPhotoDiary.controllers')
 
         $scope.capturePicture = function() {
 
-            CameraService.take().then(
+            CameraService.takePicture().then(
 
                 function(photoResult){ //photo taken
 

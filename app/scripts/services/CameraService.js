@@ -11,25 +11,25 @@ angular.module('MyPhotoDiary.services')
             correctOrientation : true,
             saveToPhotoAlbum: false };
 
-        var _service = {
+        var _takePicture = function(){
 
-            camera: navigator.camera,
-            take: function () {
+            var deferred = $q.defer();
 
-                var deferred = $q.defer();
+            navigator.camera.getPicture(
+                function (imageURI) {
+                    deferred.resolve(imageURI);
+                },
+                function (message) {
+                    deferred.reject(message);
+                },
+                _options
+            );
+            return deferred.promise;
 
-                navigator.camera.getPicture(
-                    function (imageURI) {
-                        deferred.resolve(imageURI);
-                    },
-                    function (message) {
-                        deferred.reject(message);
-                    },
-                    _options
-                );
-                return deferred.promise;
-            }
         };
-        return _service;
+
+        return {
+            takePicture : _takePicture
+        }
 
     });
