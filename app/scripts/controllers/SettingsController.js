@@ -46,11 +46,5 @@ angular.module('MyPhotoDiary.controllers')
 
         };
 
-        $scope.getCurrentPicturesJSON = function(){
-
-            return angular.toJson(PicturesService.getAllPictures());
-
-        };
-
 
     });
