@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('SettingsController', function($scope, $ionicPopup, PicturesService, SettingsService ){
+    .controller('SettingsController', function($scope, $state, $ionicPopup, PicturesService, SettingsService ){
 
         $scope.settings = {};
 
@@ -45,6 +45,13 @@ angular.module('MyPhotoDiary.controllers')
 
 
         };
+
+
+        $scope.$on('NewPicture', function() {
+
+            $state.go('tabs.timeline');
+
+        });
 
 
     });

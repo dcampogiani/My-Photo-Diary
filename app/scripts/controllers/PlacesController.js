@@ -1,6 +1,6 @@
 angular.module('MyPhotoDiary.controllers')
 
-    .controller('PlacesController', function($scope, $ionicPopup, GeolocationService, PicturesService){
+    .controller('PlacesController', function($scope, $state, $ionicPopup, GeolocationService, PicturesService){
 
         var _mapOptions = {keyboardShortcuts: false, panControl: false, zoomControl: false, streetViewControl: false};
 
@@ -46,6 +46,13 @@ angular.module('MyPhotoDiary.controllers')
 
         $scope.$on('$destroy', function() {
             $scope.modal.remove();
+        });
+
+
+        $scope.$on('NewPicture', function() {
+
+            $state.go('tabs.timeline');
+
         });
 
     });
