@@ -21,3 +21,7 @@ I’m new to javascript and angular so if you find something wrong in the code j
 - npm install 
 - bower install
 - Done, now use commands as [explained here](https://github.com/diegonetto/generator-ionic/blob/master/README.md)
+
+[![Analytics](https://ga-beacon.appspot.com/UA-50835442-1
+/My-Photo-Diary/index)](https://github.com/igrigorik/ga-beacon)
+
