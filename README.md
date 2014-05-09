@@ -5,6 +5,8 @@ A hybrid application to take pictures and look at them in a timeline or a map sh
 
 ![Demo](/screenshots/demo.gif "Demo")
 
+I’m new to javascript and angular so if you find something wrong in the code just let me know and I'll try to fix it.
+
 #Thanks
 - [Apache Cordova](http://cordova.apache.org/)
 - [Ionic Framework](http://ionicframework.com/)
