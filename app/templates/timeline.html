@@ -7,13 +7,14 @@
             </div>
         </div>
 
-        <div class="list card" ng-repeat="picture in pictures">
+        <div class="list card" bindonce ng-repeat="picture in pictures">
 
 
             <div class="item item-body">
-                <img class="full-image" ng-src={{picture.url}}>
+                <img class="full-image" bo-src=picture.url>
                 <p>
-                    {{picture.description}}
+
+                    <span bo-text="picture.description"></span>
                 </p>
             </div>
 
