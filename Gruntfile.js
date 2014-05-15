@@ -1,4 +1,4 @@
-// Generated on 2014-05-02 using generator-ionic 0.2.10
+// Generated on 2014-05-15 using generator-ionic 0.3.2
 'use strict';
 
 var _ = require('lodash');
