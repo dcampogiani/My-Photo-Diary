@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "dependencies": {
     "angular": "~1.2.12",
-    "ionic": "v1.0.0-beta.5",
+    "ionic": "v1.0.0-beta.5b",
     "angular-google-maps": "~1.0.18",
     "angular-bindonce": "~0.3.1"
   },
