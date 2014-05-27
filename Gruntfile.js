@@ -1,4 +1,4 @@
-// Generated on 2014-05-20 using generator-ionic 0.3.3
+// Generated on 2014-05-27 using generator-ionic 0.3.5
 'use strict';
 
 var _ = require('lodash');
@@ -208,7 +208,7 @@ module.exports = function (grunt) {
             '*.html',
             'templates/**/*.html',
             'fonts/*',
-            'res/*'
+            'res/**'
           ]
         }, {
           expand: true,
