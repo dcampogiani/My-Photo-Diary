@@ -2,6 +2,8 @@ angular.module('MyPhotoDiary.controllers')
 
     .controller('MainNavBarController', function($scope, $ionicModal, $ionicPopup, CameraService, GeolocationService, PicturesService, StorageService){
 
+        var beforeCamera,afterCamera,beforeSaving,afterSaving;
+
         $ionicModal.fromTemplateUrl('templates/confirmPhoto.html', {
             scope: $scope,
             animation: 'slide-in-up',
@@ -12,9 +14,13 @@ angular.module('MyPhotoDiary.controllers')
 
         $scope.capturePicture = function() {
 
+            beforeCamera= new Date().getTime();
+
             CameraService.takePicture().then(
 
                 function(photoResult){ //photo taken
+
+                    afterCamera = new Date().getTime();
 
                     GeolocationService.getCurrentPosition().then(
 
@@ -49,12 +55,16 @@ angular.module('MyPhotoDiary.controllers')
 
         $scope.saveNewPhoto = function(){
 
+            beforeSaving = new Date().getTime();
+
             StorageService.movePicture($scope._newPicture.url).then(
 
                 function(result){
                     $scope._newPicture.url = result;
                     PicturesService.savePicture($scope._newPicture);
+                    afterSaving = new Date().getTime();
                     $scope._newPicture = {};
+                    console.log("MyPhotoDiary Before Camera: "+beforeCamera + " After Camera "+ afterCamera + " Before Saving: "+beforeSaving + " After Saving: "+ afterSaving);
                 },
 
                 function(error){
