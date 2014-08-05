@@ -22,3 +22,7 @@ I’m new to javascript and angular so if you find something wrong in the code j
 - bower install
 - Done, now use commands as [explained here](https://github.com/diegonetto/generator-ionic/blob/master/README.md)
 
+##Some Info
+
+You can find on my [blog](http://www.danielecampogiani.com/category/programmazione/applicazioni-ibride-e-native/) (just italian sorry) some info about the code.
+
