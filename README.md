@@ -24,5 +24,5 @@ I’m new to javascript and angular so if you find something wrong in the code j
 
 ##Some Info
 
-You can find [here](https://github.com/dcampogiani/My-Photo-Diary/raw/master/Applicazioni%20Ibride%20e%20Native.pdf (just italian sorry) some info about the code.
+You can find [here](https://github.com/dcampogiani/My-Photo-Diary/raw/master/Applicazioni%20Ibride%20e%20Native.pdf) (just italian sorry) some info about the code.
 
